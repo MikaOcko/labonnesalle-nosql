@@ -1,11 +1,13 @@
 import Express from "express";
+import { connectDatabase } from "./config/mongo.databse.ts"
 
 // --------- Variables ----------
 const express = Express;
 const app = express();
 const port = 3000;
 
-// ---------- ?????----------
+// ---------- Logic ----------
+connectDatabase();
 app.get("/", (request, response) => {
     response.send("hello world");
 });
