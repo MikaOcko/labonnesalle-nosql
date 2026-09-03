@@ -1,5 +1,6 @@
 import Express from "express";
-import { connectDatabase } from "./config/mongo.databse.ts"
+import { connectDatabase } from "./config/mongo.database.ts"
+import roomRouter from "./routes/room.router.ts";
 
 // --------- Variables ----------
 const express = Express;
@@ -15,3 +16,5 @@ app.get("/", (request, response) => {
 app.listen(port, () => {
     console.log(`example app listening on port ${port}`);
 });
+
+app.use("/api", roomRouter);
