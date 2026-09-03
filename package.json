@@ -7,7 +7,7 @@
   "type": "module",
   "main": "app.ts",
   "scripts": {
-    "start": "node app.ts"
+    "start": "node src/app.ts"
   },
   "dependencies": {
     "express": "^5.2.1",
