@@ -13,6 +13,9 @@ app.get("/", (request, response) => {
     response.send("hello two");
 });
 
+// Middleware pour parser le JSON
+app.use(express.json());
+
 app.use("/api", roomRouter);
 
 app.listen(port, () => {
