@@ -20,10 +20,19 @@ const getAll = async (request:Request, response:Response) => {
         return response.status(500).json({ error: "Internal server error" })
     };
 };
-// const create = async () => {};
+const createOne = async (request:Request, response:Response, next : NextFunction) => {
+    try {
+        const newRoom = await roomService.createOne(request.body);
+        return response.status(201).json(newRoom); //status 201 : created
+    } catch(error) {
+        // Gestion des erreurs
+        next(error);
+    }
+};
+
 // const updateOne = async () => {};
 // const deleteOne = async () => {};
 
 //export default {getById, getAll, create, updateOne, deleteOne};
 
-export default {getAll, getById};
+export default {getAll, getById, createOne};

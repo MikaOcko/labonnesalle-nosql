@@ -8,7 +8,7 @@ const roomRouter = express.Router();
 
 roomRouter.get("/rooms", roomController.getAll);
 roomRouter.get("/rooms/:id", roomController.getById);
-// roomRouter.post("/rooms", roomController.create);
+roomRouter.post("/rooms", roomController.createOne);
 // roomRouter.patch("/rooms/:id", roomController.updateOne);
 // roomRouter.delete("/rooms/:id", checkExists, roomController.deleteOne);
 
