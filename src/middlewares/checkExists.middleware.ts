@@ -1,15 +1,17 @@
-// //========== Imports ===========
-// import roomService from "../services/room.service.ts";
+//========== Imports ===========
+import roomService from "../services/room.service.ts";
 
 // //========== Logic ==========
-// const checkExists = async (req, res, next) => {
-//     const recipe = await recipeService.getById(req.params.id);
-//     if (!recipe) {
-//     return res.status(404).json({
-//     message: "Recipe not found",
-//     });
+// const checkExists = async (request, response, next) => {
+//     const room = await roomService.getById(request.params.id);
+
+//     if (!room) {
+//         return response.status(404).json({
+//             message: "Room not found",
+//         });
 //     }
-//     req.recipe = recipe;
+//     request.room = room;
 //     next();
 // };
+
 // export default { checkExists };

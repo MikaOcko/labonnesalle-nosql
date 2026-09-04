@@ -10,11 +10,12 @@ const port = 3000;
 // ---------- Logic ----------
 connectDatabase();
 app.get("/", (request, response) => {
-    response.send("hello world");
+    response.send("hello two");
 });
+
+app.use("/api", roomRouter);
 
 app.listen(port, () => {
     console.log(`example app listening on port ${port}`);
 });
 
-app.use("/api", roomRouter);
