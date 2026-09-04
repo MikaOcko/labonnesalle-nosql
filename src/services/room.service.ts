@@ -2,6 +2,16 @@
 import roomRepository from "../repositories/room.repository.ts";
 
 // ============ Logic ==========
+// Type
+type Room = {
+    label: string;
+    capacity: number;
+    site: string;
+    building: string;
+    floor: number;
+    material: string[];
+};
+
 const getById = async (id: string) => {
     const room = await roomRepository.findById(id);
     if (!room) {
@@ -17,9 +27,17 @@ const getAll = async () => {
     };
     return rooms;
 };
-// const create = async () => {};
+
+const createOne = async (room : Room) => {
+    const newRoom = await roomRepository.createOne(room);
+    if(!newRoom){
+        throw new Error("oskour");
+    }
+    return newRoom;
+};
+
 // const updateOne = async () => {};
 // const deleteOne = async () => {};
 
 // export default {getById,getAll, create, updateOne, deleteOne};
-export default {getAll, getById};
+export default {getAll, getById, createOne};

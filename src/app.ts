@@ -8,13 +8,18 @@ const app = express();
 const port = 3000;
 
 // ---------- Logic ----------
+// Database Check
 connectDatabase();
+
+// Middleware pour parser le JSON
+app.use(express.json());
+//Router
+app.use("/api", roomRouter);
+// Health check
 app.get("/", (request, response) => {
     response.send("hello two");
 });
-
-app.use("/api", roomRouter);
-
+// Start srver
 app.listen(port, () => {
     console.log(`example app listening on port ${port}`);
 });
