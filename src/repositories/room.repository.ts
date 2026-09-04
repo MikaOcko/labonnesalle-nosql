@@ -1,18 +1,15 @@
 //========== Imports ===========
 import { RoomModel } from "../models/room.model.ts";
 // =========== Logic ===========
-// const findById = async (id: string) => {
-//     return RoomModel.findById(id);
-// };
-// const create = async (data: {name: string}) => {
-//     return RoomModel.insertOne({
-//         // data,
-//     });
-// };
+const findById = async (id: string) => {
+    return RoomModel.findById(id);
+};
 
 const getRooms = async () => {
-    return RoomModel.find();
+    const rooms = await RoomModel.find();
+    console.log("Rooms found:", rooms); // check if receive sth
+    return rooms;
 };
 
 
-export default {getRooms};
+export default {getRooms, findById};
