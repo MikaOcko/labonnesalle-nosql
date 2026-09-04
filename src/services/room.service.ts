@@ -31,13 +31,13 @@ const getAll = async () => {
 const createOne = async (room : Room) => {
     const newRoom = await roomRepository.createOne(room);
     if(!newRoom){
-        throw new Error("oskour");
+        throw new Error("Room not created");
     }
     return newRoom;
 };
 
 // const updateOne = async () => {};
-// const deleteOne = async () => {};
+const deleteOne = async () => {};
 
 // export default {getById,getAll, create, updateOne, deleteOne};
-export default {getAll, getById, createOne};
+export default {getAll, getById, createOne, deleteOne};

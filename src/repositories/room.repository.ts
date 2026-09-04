@@ -30,4 +30,7 @@ const createOne = (room : Room) => {
     return newRoom;
 };
 
-export default {getRooms, findById, createOne};
+// Delete one room
+const deleteOne = () => {};
+
+export default {getRooms, findById, createOne, deleteOne};

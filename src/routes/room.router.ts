@@ -11,5 +11,6 @@ roomRouter.get("/rooms/:id", roomController.getById);
 roomRouter.post("/rooms", roomController.createOne);
 // roomRouter.patch("/rooms/:id", roomController.updateOne);
 // roomRouter.delete("/rooms/:id", checkExists, roomController.deleteOne);
+roomRouter.delete("/rooms/:id", roomController.deleteOne);
 
 export default roomRouter;

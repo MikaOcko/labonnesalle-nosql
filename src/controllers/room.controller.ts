@@ -31,8 +31,8 @@ const createOne = async (request:Request, response:Response, next : NextFunction
 };
 
 // const updateOne = async () => {};
-// const deleteOne = async () => {};
+const deleteOne = async () => {};
 
 //export default {getById, getAll, create, updateOne, deleteOne};
 
-export default {getAll, getById, createOne};
+export default {getAll, getById, createOne, deleteOne};
