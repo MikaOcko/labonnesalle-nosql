@@ -38,4 +38,16 @@ const deleteOne = (id: string) => {
     return deletedRoom;
 };
 
-export default {getRooms, findById, createOne, deleteOne};
+// Update a room
+const updateOne = async (id: string, updateData: Partial<Room>) => {
+  const updatedRoom = await RoomModel.findByIdAndUpdate(
+    id,
+    updateData,
+    { returnDocument: 'after'}
+  );
+
+  console.log("↪️ Room updated");
+  return updatedRoom;
+};
+
+export default {getRooms, findById, createOne, deleteOne, updateOne};

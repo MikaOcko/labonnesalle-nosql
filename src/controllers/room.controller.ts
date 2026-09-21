@@ -3,6 +3,16 @@ import type { NextFunction, Request, Response } from "express";
 import roomService from "../services/room.service.ts";
 
 //========== Logic ==========
+// Type
+type Room = {
+    label: string;
+    capacity: number;
+    site: string;
+    building: string;
+    floor: number;
+    material: string[];
+};
+
 const getById = async (request:Request<{id: string}>, response:Response, next:NextFunction) => {
     try {
         const room = await roomService.getById(request.params.id);
@@ -30,7 +40,19 @@ const createOne = async (request:Request, response:Response, next : NextFunction
     }
 };
 
-// const updateOne = async () => {};
+const updateOne = async (request: Request<{ id: string }, any, Partial<Room>>, response: Response, next: NextFunction) => {
+  try {
+    const id = request.params.id;
+    const updateData = request.body;
+    
+    const updatedRoom = await roomService.updateOne(id, updateData);
+    response.status(200).json(updatedRoom);
+
+    } catch (error) {
+        next(error);
+    };
+};
+
 const deleteOne = async (request:Request<{id: string}>, response:Response, next:NextFunction) => {
     try{
         const deletedRoom = await roomService.deleteOne(request.params.id);
@@ -40,6 +62,4 @@ const deleteOne = async (request:Request<{id: string}>, response:Response, next:
     };
 };
 
-//export default {getById, getAll, create, updateOne, deleteOne};
-
-export default {getAll, getById, createOne, deleteOne};
+export default {getAll, getById, createOne, deleteOne, updateOne};

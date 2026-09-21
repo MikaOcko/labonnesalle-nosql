@@ -36,11 +36,14 @@ const createOne = async (room : Room) => {
     return newRoom;
 };
 
-// const updateOne = async () => {};
+const updateOne = async (id:string, updateData: Partial<Room>) => {
+    const updateRoom = await roomRepository.updateOne(id, updateData);
+    return updateRoom;
+};
+
 const deleteOne = async (id: string) => {
     const deletedeRoom = await roomRepository.deleteOne(id);
     return deletedeRoom;
 };
 
-// export default {getById,getAll, create, updateOne, deleteOne};
-export default {getAll, getById, createOne, deleteOne};
+export default {getAll, getById, createOne, deleteOne, updateOne};
