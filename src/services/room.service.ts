@@ -37,7 +37,10 @@ const createOne = async (room : Room) => {
 };
 
 // const updateOne = async () => {};
-const deleteOne = async () => {};
+const deleteOne = async (id: string) => {
+    const deletedeRoom = await roomRepository.deleteOne(id);
+    return deletedeRoom;
+};
 
 // export default {getById,getAll, create, updateOne, deleteOne};
 export default {getAll, getById, createOne, deleteOne};

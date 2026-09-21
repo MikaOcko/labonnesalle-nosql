@@ -26,11 +26,16 @@ const getRooms = async () => {
 // Create new room
 const createOne = (room : Room) => {
     const newRoom = RoomModel.create(room);
-    console.log("Room created");
+    console.log("✅ Room created");
     return newRoom;
 };
 
 // Delete one room
-const deleteOne = () => {};
+const deleteOne = (id: string) => {
+    const deletedRoom = RoomModel.deleteOne({ _id: id });
+    // const deletedRoom = await RoomModel.findByIdAndDelete(id);
+    console.log("🚮 Room deleted");
+    return deletedRoom;
+};
 
 export default {getRooms, findById, createOne, deleteOne};

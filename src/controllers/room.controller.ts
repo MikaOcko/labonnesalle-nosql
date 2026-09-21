@@ -31,7 +31,14 @@ const createOne = async (request:Request, response:Response, next : NextFunction
 };
 
 // const updateOne = async () => {};
-const deleteOne = async () => {};
+const deleteOne = async (request:Request<{id: string}>, response:Response, next:NextFunction) => {
+    try{
+        const deletedRoom = await roomService.deleteOne(request.params.id);
+        response.status(200).json(deletedRoom);
+    } catch(error) {
+        next(error);
+    };
+};
 
 //export default {getById, getAll, create, updateOne, deleteOne};
 
