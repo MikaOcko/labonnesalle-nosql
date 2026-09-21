@@ -21,6 +21,6 @@ app.get("/", (request, response) => {
 });
 // Start srver
 app.listen(port, () => {
-    console.log(`example app listening on port ${port}`);
+    console.log(`App listening on port ${port}`);
 });
 
