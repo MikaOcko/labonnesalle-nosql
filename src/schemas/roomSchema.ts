@@ -5,16 +5,18 @@ import { z } from 'zod';
 export const roomSchema = z.object({
     label: z
         .string()
-        .min(3, "Le nom de la salle doit avoir au minimum 3 caractères."),
-    capacity: z
+        .min(3),
+    capacity: z.coerce
         .number()
-        .positive("La capacité doit être supérieure à 0."),
+        .positive(),
     site: z
         .string()
-        .min(3, "Le site doit avoir au minimum 3 caractères."),
+        .min(3),
     building: z
         .string()
-        .min(1, "Le bâtiment doit avoir au minimum 1 caractère."),
-    floor: z.number(),
-    material: z.string().optional(),
+        .min(1),
+    floor: z.coerce.number(),
+    material: z.array(z.string()),
 });
+
+export const roomUpdateSchema = roomSchema.partial();
