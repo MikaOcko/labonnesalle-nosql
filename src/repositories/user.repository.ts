@@ -1,6 +1,7 @@
 //========== Imports ===========
 
 import { UserModel } from "../models/user.model.ts";
+import type { UserType } from "../types/user.type.ts";
 
 // =========== Logic ===========
 // Function to retrieve all users
@@ -15,4 +16,11 @@ const getUser = async (id: string) => {
     return UserModel.findById(id);
 };
 
-export default {getUsers, getUser};
+// Create new user
+const createOne = (user : UserType) => {
+    const newUser = UserModel.create(user);
+    console.log("✅ User created");
+    return newUser;
+};
+
+export default {getUsers, getUser, createOne};

@@ -1,5 +1,6 @@
 // ============ Imports ==============
 import userRepository from "../repositories/user.repository.ts";
+import type { UserType } from "../types/user.type.ts";
 
 // ============ Logic ==========
 // Function to retrieve all users
@@ -19,4 +20,13 @@ const getById = async (id: string) => {
     }
     return user;
 };
-export default {getAll, getById};
+
+// Function to create new user
+const createOne = async (user : UserType) => {
+    const newUser = await userRepository.createOne(user);
+    if(!newUser){
+        throw new Error("Room not created");
+    }
+    return newUser;
+};
+export default {getAll, getById, createOne};
