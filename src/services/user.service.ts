@@ -29,4 +29,11 @@ const createOne = async (user : UserType) => {
     }
     return newUser;
 };
-export default {getAll, getById, createOne};
+
+// Function to delete one user
+const deleteOne = async (id: string) => {
+    const deletedeUser = await userRepository.deleteOne(id);
+    return deletedeUser;
+};
+
+export default {getAll, getById, createOne, deleteOne};

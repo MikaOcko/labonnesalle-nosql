@@ -23,4 +23,12 @@ const createOne = (user : UserType) => {
     return newUser;
 };
 
-export default {getUsers, getUser, createOne};
+// Delete one user
+const deleteOne = (id: string) => {
+    const deletedUser = UserModel.deleteOne({ _id: id });
+    // const deletedUser = await UserModel.findByIdAndDelete(id);
+    console.log("🚮 User deleted");
+    return deletedUser;
+};
+
+export default {getUsers, getUser, createOne, deleteOne};
