@@ -11,4 +11,12 @@ const getAll = async () => {
     return users;
 };
 
-export default {getAll};
+// Function to retrieve one user by id
+const getById = async (id: string) => {
+    const user = await userRepository.getUser(id);
+    if (!user) {
+        throw new Error("user not found");
+    }
+    return user;
+};
+export default {getAll, getById};

@@ -13,4 +13,14 @@ const getAll = async (request:Request, response:Response) => {
     };
 };
 
-export default {getAll};
+// Function to retrieve one user
+const getById = async (request:Request<{id: string}>, response:Response, next:NextFunction) => {
+    try {
+        const user = await userService.getById(request.params.id);
+        response.status(200).json(user);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export default {getAll, getById};

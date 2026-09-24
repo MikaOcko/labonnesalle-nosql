@@ -10,4 +10,9 @@ const getUsers = async () => {
     return users;
 };
 
-export default {getUsers};
+// Retrieve one user by ID 
+const getUser = async (id: string) => {
+    return UserModel.findById(id);
+};
+
+export default {getUsers, getUser};
