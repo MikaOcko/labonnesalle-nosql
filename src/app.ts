@@ -1,6 +1,7 @@
 import Express from "express";
 import { connectDatabase } from "./config/mongo.database.ts"
 import roomRouter from "./routes/room.router.ts";
+import userRouter from "./routes/user.router.ts";
 
 // --------- Variables ----------
 const express = Express;
@@ -15,6 +16,7 @@ connectDatabase();
 app.use(express.json());
 //Router
 app.use("/api", roomRouter);
+app.use("/api", userRouter);
 // Health check
 app.get("/", (request, response) => {
     response.send("hello two");

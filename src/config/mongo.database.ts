@@ -13,6 +13,8 @@ export const connectDatabase = async () => {
     console.log("📁 Collections disponibles:", collections?.map(c => c.name));
     
     // Vérifie directement via Mongoose
-    const count = await mongoose.connection.db?.collection("rooms").countDocuments();
-    console.log("📊 Nombre de documents dans 'rooms':", count);
+    const countRoom = await mongoose.connection.db?.collection("rooms").countDocuments();
+    console.log("📊 Nombre de documents dans 'rooms':", countRoom);
+    const countUser = await mongoose.connection.db?.collection("users").countDocuments();
+    console.log("📊 Nombre de documents dans 'users':", countUser);
 };
