@@ -1,17 +1,9 @@
 //========== Imports ===========
 import { RoomModel } from "../models/room.model.ts";
+import type { RoomType } from "../types/room.type.ts";
 // =========== Logic ===========
-// Type
-type Room = {
-    label: string;
-    capacity: number;
-    site: string;
-    building: string;
-    floor: number;
-    material: string[];
-};
 
-// Retrieve one room by ID : not functional !!!
+// Retrieve one room by ID 
 const findById = async (id: string) => {
     return RoomModel.findById(id);
 };
@@ -24,7 +16,7 @@ const getRooms = async () => {
 };
 
 // Create new room
-const createOne = (room : Room) => {
+const createOne = (room : RoomType) => {
     const newRoom = RoomModel.create(room);
     console.log("✅ Room created");
     return newRoom;
@@ -39,7 +31,7 @@ const deleteOne = (id: string) => {
 };
 
 // Update a room
-const updateOne = async (id: string, updateData: Partial<Room>) => {
+const updateOne = async (id: string, updateData: Partial<RoomType>) => {
   const updatedRoom = await RoomModel.findByIdAndUpdate(
     id,
     updateData,

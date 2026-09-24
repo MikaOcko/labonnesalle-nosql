@@ -1,17 +1,9 @@
 //========== Imports =========
 import type { NextFunction, Request, Response } from "express";
 import roomService from "../services/room.service.ts";
+import type { RoomType } from "../types/room.type.ts";
 
 //========== Logic ==========
-// Type
-type Room = {
-    label: string;
-    capacity: number;
-    site: string;
-    building: string;
-    floor: number;
-    material: string[];
-};
 
 const getById = async (request:Request<{id: string}>, response:Response, next:NextFunction) => {
     try {
@@ -40,7 +32,7 @@ const createOne = async (request:Request, response:Response, next : NextFunction
     }
 };
 
-const updateOne = async (request: Request<{ id: string }, any, Partial<Room>>, response: Response, next: NextFunction) => {
+const updateOne = async (request: Request<{ id: string }, any, Partial<RoomType>>, response: Response, next: NextFunction) => {
   try {
     const id = request.params.id;
     const updateData = request.body;

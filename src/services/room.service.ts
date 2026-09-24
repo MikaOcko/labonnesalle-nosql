@@ -1,17 +1,8 @@
 // ============ Imports ==============
 import roomRepository from "../repositories/room.repository.ts";
+import type { RoomType } from "../types/room.type.ts";
 
 // ============ Logic ==========
-// Type
-type Room = {
-    label: string;
-    capacity: number;
-    site: string;
-    building: string;
-    floor: number;
-    material: string[];
-};
-
 const getById = async (id: string) => {
     const room = await roomRepository.findById(id);
     if (!room) {
@@ -28,7 +19,7 @@ const getAll = async () => {
     return rooms;
 };
 
-const createOne = async (room : Room) => {
+const createOne = async (room : RoomType) => {
     const newRoom = await roomRepository.createOne(room);
     if(!newRoom){
         throw new Error("Room not created");
@@ -36,7 +27,7 @@ const createOne = async (room : Room) => {
     return newRoom;
 };
 
-const updateOne = async (id:string, updateData: Partial<Room>) => {
+const updateOne = async (id:string, updateData: Partial<RoomType>) => {
     const updateRoom = await roomRepository.updateOne(id, updateData);
     return updateRoom;
 };
