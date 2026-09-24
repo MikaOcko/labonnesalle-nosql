@@ -8,22 +8,7 @@ interface TypedRequest<T> extends Request {
 }
 
 export const validateData = <T extends z.ZodTypeAny>(schema: T): RequestHandler => {
-    return (request: TypedRequest<any>, response: Response, next: NextFunction):void => {
-		// try {
-		// 	// schema.parse(request.body);
-		// 	// next();
-
-		// } catch (error) {
-		// 	// if (error instanceof ZodError) {
-		// 	// const errorMessages = error.errors.map((issue: any) => ({
-		// 	// 	message: `${issue.path.join('.')} is ${issue.message}`,
-		// 	// }))
-		// 	// response.status(StatusCodes.BAD_REQUEST).json({ error: 'Invalid data', details: errorMessages });
-		// 	// } else {
-		// 	// response.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: 'Internal Server Error' });
-		// 	// }
-
-		// }
+    return (request: TypedRequest<z.infer<T>>, response: Response, next: NextFunction):void => {
 
 		const validationResult = schema.safeParse(request.body);
 
