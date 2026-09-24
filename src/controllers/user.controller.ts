@@ -1,6 +1,6 @@
 //========== Imports =========
 import type { NextFunction, Request, Response } from "express";
-import userService from "../services/room.service.ts";
+import userService from "../services/user.service.ts";
 
 //========== Logic ==========
 // Function to retrieve all users
@@ -12,3 +12,5 @@ const getAll = async (request:Request, response:Response) => {
         return response.status(500).json({ error: "Internal server error" })
     };
 };
+
+export default {getAll};

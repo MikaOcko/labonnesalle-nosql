@@ -1,6 +1,6 @@
 //=========== Imports ==========
 import express from "express";
-import userController from "../controllers/room.controller.ts";
+import userController from "../controllers/user.controller.ts";
 
 //========== Logic ===========
 const userRouter = express.Router();
